@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+
+class Solution {
+    public boolean solution(int x) {
+        boolean answer = true;
+        ArrayList<Integer> list = new ArrayList<>();
+        int num = x;
+        while (num > 0) {
+            list.add(num % 10);
+            num /= 10;
+        }
+        int sum = 0;
+        for (Integer integer : list) {
+            sum += integer;
+        }
+        if(!(x % sum == 0)) return false;
+        return answer;
+    }
+}
