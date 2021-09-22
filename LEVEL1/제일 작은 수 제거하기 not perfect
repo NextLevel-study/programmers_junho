@@ -1,0 +1,19 @@
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] arr) {
+        int[] answer;
+        System.out.println("실행");
+        if(arr.length == 1) {
+            answer = new int[1];
+            answer[0] = -1;
+        }else {
+            answer = new int[arr.length - 1];
+            Arrays.sort(arr); // 오름차순 정렬
+            for (int i = 1; i < arr.length; i++) {
+                answer[arr.length - i - 1] = arr[i];
+            }
+        }
+        return answer;
+    }
+}
