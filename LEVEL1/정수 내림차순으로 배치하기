@@ -1,24 +1,18 @@
-import java.util.ArrayList;
 import java.util.Collections;
-class Solution {
+import java.util.Arrays;
+
+public class Solution {
     public long solution(long n) {
         long answer = 0;
-        String sAnswer = "";
-        int len = (int)(Math.log10(n)+1 ); // 정수의 자릿수
-
-        ArrayList<Long> alist = new ArrayList<>();
-        for (int i = 0; i < len; i++) {
-            alist.add((n % 10));
-            n /= 10;
-        }
-        Collections.sort(alist, Collections.reverseOrder()); // 내림차순 정렬
-        
-        for (Long aLong : alist) {
-            sAnswer += aLong;
-        }
-
-
-        answer = Integer.parseInt(sAnswer);
+        String[] arr = ("" + n).split("");
+        Arrays.sort(arr); // 오름차순 정렬
+        Collections.reverse(Arrays.asList(arr)); // 내림차순 (Collection은 List형을 필요로 한다.)
+        answer = Long.parseLong(String.join("", arr)); //(String으로 다시 바꾸고 Long으로 변환)
         return answer;
     }
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        System.out.println(s.solution(118372));
+    }
+
 }
