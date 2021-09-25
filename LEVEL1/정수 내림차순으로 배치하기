@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.Collections;
+class Solution {
+    public long solution(long n) {
+        long answer = 0;
+        String sAnswer = "";
+        int len = (int)(Math.log10(n)+1 ); // 정수의 자릿수
+
+        ArrayList<Long> alist = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            alist.add((n % 10));
+            n /= 10;
+        }
+        Collections.sort(alist, Collections.reverseOrder()); // 내림차순 정렬
+        
+        for (Long aLong : alist) {
+            sAnswer += aLong;
+        }
+
+
+        answer = Integer.parseInt(sAnswer);
+        return answer;
+    }
+}
