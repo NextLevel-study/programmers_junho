@@ -1,0 +1,28 @@
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        String[] sArr = s.split(" ");
+
+        for (int i = 0; i < sArr.length; i++) {
+            char[] cArr = sArr[i].toCharArray();
+            for (char c : cArr) {
+                if (i % 2 == 0) {
+                    if (Character.isLowerCase(c)) {
+                        answer += Character.toUpperCase(c);
+                    } else {
+                        answer += c;
+                    }
+                } else {
+                    if (Character.isLowerCase(c)) {
+                        answer += c;
+                    } else {
+                        answer += Character.toUpperCase(c);
+                    }
+                }
+            }
+            answer+=" ";
+        }
+
+        return answer;
+    }
+}
