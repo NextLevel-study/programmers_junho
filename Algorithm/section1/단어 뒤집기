@@ -3,12 +3,21 @@ package algorithm;
 import java.util.*;
 
 public class Main {
-    public ArrayList<String> solution(String[] arr) {
+    public ArrayList<String> solution(int n, String[] arr) {
         ArrayList<String> answer = new ArrayList<>();
         for (String s : arr) {
-            String str = new StringBuilder(s).reverse().toString();
-            answer.add(str);
+            char[] c = s.toCharArray();
+            int lt = 0, rt = c.length-1;
+            while (lt < rt) {
+                char tmp = c[lt];
+                c[lt] =c[rt];
+                c[rt] = tmp;
+                lt++;
+                rt--;
+            }
+            answer.add(String.valueOf(c));
         }
+
 
         return answer;
     }
