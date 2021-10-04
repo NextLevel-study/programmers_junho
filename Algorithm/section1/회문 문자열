@@ -6,10 +6,9 @@ public class Main {
     public String solution(String str) {
         String answer = "YES";
         str = str.toUpperCase();
-        int len = str.length(); // 길이의 절반 전까지만 탐색하면 
-        for (int i = 0; i < len / 2; i++) {
-            if(str.charAt(i) != str.charAt(len-i-1)) return "NO";
-        }
+        String sb = new StringBuilder(str).reverse().toString();
+        if(!sb.equals(str)) return "NO";
+
         return answer;
     }
 
