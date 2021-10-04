@@ -15,9 +15,9 @@ public class Main {
                 c[lt] = tmp;
                 lt++;
                 rt--;
-            } else if (Character.isAlphabetic(c[lt]) && !(Character.isAlphabetic(c[rt]))) {
+            } else if (!(Character.isAlphabetic(c[rt]))) {
                 rt--;
-            } else if (!Character.isAlphabetic(c[lt]) && Character.isAlphabetic(c[rt])) {
+            } else if (!Character.isAlphabetic(c[lt])) {
                 lt++;
             } else {
                 lt++;
@@ -25,9 +25,6 @@ public class Main {
             }
         }
         answer = String.valueOf(c);
-
-
-
         return answer;
     }
 
