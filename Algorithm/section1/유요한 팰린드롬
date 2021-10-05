@@ -1,22 +1,13 @@
 package main;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public String solution(String str) {
         String answer = "YES";
-        Pattern pt = Pattern.compile("[a-zA-Z]");
-        Matcher matcher =  pt.matcher(str);
-        String result = "";
-
-        while (matcher.find()) {
-            result += matcher.group();
-        }
-        String rev = new StringBuilder(result).reverse().toString();
-        
-        if(!rev.equalsIgnoreCase(result)) answer = "NO";
+        str = str.toUpperCase().replaceAll("[^A-Z]",""); // 영문 대문자가 아닌 애들을 지워라.
+        String result = new StringBuilder(str).reverse().toString();
+        if(!(str.equals(result))) answer = "NO";
 
         return answer;
     }
@@ -28,7 +19,5 @@ public class Main {
         System.out.println(T.solution(str));
 
     }
-
-
 }
 
