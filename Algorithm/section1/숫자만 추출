@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     public int solution(String str) {
-        int answer = 0;
+        String answer = "";
         for (char x : str.toCharArray()) {
-            if(x >= 48 && x < 57) answer = answer * 10 + (x - 48); // 아스키 넘버로 숫자만 
+            if(Character.isDigit(x)) answer += x;
         }
-        System.out.println((char)10);
 
-        return answer;
+        return Integer.parseInt(answer);
     }
 
     public static void main(String[] args) {
