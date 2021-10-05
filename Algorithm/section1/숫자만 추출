@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class Main {
     public int solution(String str) {
         int answer = 0;
-        str = str.replaceAll("[^0-9]", "");
-        answer = Integer.parseInt(str);
-
+        for (char x : str.toCharArray()) {
+            if(x >= 48 && x < 57) answer = answer * 10 + (x - 48); // 아스키 넘버로 숫자만 
+        }
+        System.out.println((char)10);
 
         return answer;
     }
@@ -19,5 +20,7 @@ public class Main {
         System.out.println(T.solution(str));
 
     }
+
+
 }
 
