@@ -1,0 +1,51 @@
+package main;
+
+import java.util.Scanner;
+
+public class Main {
+    public int[] solution(String str, char c) {
+
+        int[] answer = new int[str.length()];
+        int p = 1000;
+        for (int i = 0; i < answer.length; i++) {
+            if (str.charAt(i) != c) {
+                p++;
+                answer[i] = p;
+            } else {
+                p = 0;
+                answer[i] = p;
+            }
+        }
+        for (int i = answer.length-1; i >= 0; i--) {
+            if (str.charAt(i) != c) {
+                p++;
+                if(p < answer[i]) {
+                    answer[i] = p;
+                }
+                // answer[i] = Math.min(answer[i], p);
+                
+            } else p = 0;
+
+        }
+
+
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+//        String[] str = scan.nextLine().split(" ");
+//        char c = str[1].charAt(0);
+        String str = scan.next();
+        char c = scan.next().charAt(0);
+        Main T = new Main();
+
+        for (int i : T.solution(str, c)) {
+            System.out.print(i + " ");
+        }
+
+    }
+
+
+}
+
