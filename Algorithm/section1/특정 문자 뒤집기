@@ -7,19 +7,15 @@ public class Main {
         String answer = "";
         int lt = 0, rt = str.length() - 1;
         char[] c = str.toCharArray();
-
         while (lt < rt) {
-            if (!(Character.isAlphabetic(c[rt]))) {
-                rt--;
-            } else if (!Character.isAlphabetic(c[lt])) {
-                lt++;
-            } else {
-                char tmp = c[rt];
-                c[rt] = c[lt];
-                c[lt] = tmp;
+            if (Character.isAlphabetic(c[lt]) && Character.isAlphabetic(c[rt])) {
+                char tmp = c[lt];
+                c[lt] = c[rt];
+                c[rt] = tmp;
                 lt++;
                 rt--;
-            }
+            } else if (!Character.isAlphabetic(c[lt])) lt++;
+            else rt--;
         }
         answer = String.valueOf(c);
 
@@ -29,11 +25,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        Main m = new Main();
         String str = scan.next();
-        Main T = new Main();
-        System.out.println(T.solution(str));
+
+        System.out.println(m.solution(str));
     }
-
-
 }
 
