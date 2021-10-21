@@ -5,19 +5,30 @@ import java.util.Scanner;
 public class Main {
     public String solution(String str) {
         String answer = "YES";
-        str = str.toUpperCase().replaceAll("[^A-Z]",""); // 영문 대문자가 아닌 애들을 지워라.
-        String result = new StringBuilder(str).reverse().toString();
-        if(!(str.equals(result))) answer = "NO";
-
+        str = str.toUpperCase();
+        int lt = 0, rt = str.length() - 1;
+        while (lt < rt) {
+            if (Character.isAlphabetic(str.charAt(lt)) && Character.isAlphabetic(str.charAt(rt))) {
+                if (str.charAt(lt) == str.charAt(rt)) {
+                    lt++;
+                    rt--;
+                } else return "NO";
+            } else if (!Character.isAlphabetic(str.charAt(lt))) {
+                lt++;
+            } else {
+                rt--;
+            }
+        }
         return answer;
     }
 
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        Main m = new Main();
         String str = scan.nextLine();
-        Main T = new Main();
-        System.out.println(T.solution(str));
 
+        System.out.println(m.solution(str));
     }
 }
 
