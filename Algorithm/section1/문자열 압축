@@ -5,29 +5,24 @@ import java.util.Scanner;
 public class Main {
     public String solution(String str) {
         String answer = "";
-        str = str + " ";
-        int cnt = 1;
+        str = str + " "; // 끝자리 공백 추가
+        int count = 1;
         for (int i = 0; i < str.length() - 1; i++) {
-            if (str.charAt(i) == str.charAt(i + 1)) cnt++;
+            if (str.charAt(i) == str.charAt(i + 1)) count++;
             else {
                 answer += str.charAt(i);
-                if (cnt > 1) {
-                    answer += cnt;
-                    cnt = 1;
-                }
+                if (count > 1) answer += count;
+                count = 1;
             }
         }
         return answer;
     }
 
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        Main m = new Main();
         String str = scan.next();
-        Main T = new Main();
-
-        for (char c : T.solution(str).toCharArray()) {
-            System.out.print(c + " ");
-        }
+        System.out.println(m.solution(str));
     }
 }
-
