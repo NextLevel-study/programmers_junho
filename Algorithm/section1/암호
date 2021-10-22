@@ -1,0 +1,29 @@
+package main;
+
+import java.util.Scanner;
+
+public class Main {
+    public StringBuilder solution(int n, String str) {
+        StringBuilder answer = new StringBuilder();
+
+        char num = 0;
+        for (int i = 0; i < n; i++) {
+            String tmp = str.substring(0, 7);
+            str = str.substring(7);
+            tmp = tmp.replace("#", "1").replace("*", "0");
+            num = (char) Integer.parseInt(tmp, 2);
+            answer.append(num);
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Main m = new Main();
+        int n = scan.nextInt();
+        String str = scan.next();
+
+        System.out.println(m.solution(n, str));
+    }
+}
+
