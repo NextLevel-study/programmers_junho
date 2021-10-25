@@ -1,0 +1,20 @@
+package algorithm;
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static int solution(String str) {
+        int answer = 0;
+        str = str.replaceAll("c=|c-|dz=|lj|s=|d-|nj|z=", "a");
+        answer = str.length();
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String str = scan.next();
+
+        System.out.println(Main.solution(str));
+    }
+}
