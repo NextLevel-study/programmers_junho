@@ -1,0 +1,67 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+
+    public static int solution(int n, int[][] arr) {
+        int answer = 0, max = 0;
+//        Integer.max()
+        // 행 최대합
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < n; k++) {
+                answer += arr[i][k];
+            }
+            max = Integer.max(answer, max);
+            answer = 0;
+        }
+
+        // 열 최대합
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                answer += arr[k][i];
+            }
+            max = Integer.max(answer, max);
+            answer = 0;
+        }
+
+        // 대각선 최대합
+        // 각 행,열 의 합은 잘 나와요
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < n; k++) {
+                if (i == k) {
+                    answer += arr[i][k];
+                }
+            }
+        }
+        max = Integer.max(answer, max);
+        answer = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < n; k++) {
+                if (i + k == n - 1) {
+                    answer += arr[i][k];
+                }
+            }
+        }
+        max = Integer.max(answer, max);
+        answer = 0;
+        return max;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        int n = scan.nextInt();
+        int[][] arr = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < n; k++) {
+                arr[i][k] = scan.nextInt();
+            }
+        }
+        System.out.println(Main.solution(n, arr));
+    }
+
+
+}
