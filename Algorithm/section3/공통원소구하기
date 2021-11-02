@@ -1,0 +1,45 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+
+    public static ArrayList<Integer> solution(int n, int k, int[] arr, int[] secArr) {
+        ArrayList<Integer> answer = new ArrayList<Integer>();
+        int p1 = 0, p2 = 0;
+        Arrays.sort(arr);
+        Arrays.sort(secArr);
+        while (p1 < n && p2 < k) {
+            if (arr[p1] == secArr[p2]) {
+                answer.add(arr[p1++]);
+                p2++;
+            } else if (arr[p1] > secArr[p2]) {
+                p2++;
+            } else {
+                p1++;
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        int n = scan.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scan.nextInt();
+        }
+        int k = scan.nextInt();
+        int[] secArr = new int[k];
+        for (int i = 0; i < k; i++) {
+            secArr[i] = scan.nextInt();
+        }
+        for (int x : Main.solution(n, k, arr, secArr)) {
+            System.out.print(x + " ");
+        }
+    }
+
+
+}
