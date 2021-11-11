@@ -3,25 +3,16 @@ package algorithm;
 import java.util.*;
 
 public class Main {
-
     public static int solution(int N, int K, int[] arr) {
-        int answer = 0;
-        int lt = 0, p = 0, max_len = 0, K_count = K;
+        int answer = 0, cnt = 0, lt = 0;
         for (int rt = 0; rt < N; rt++) {
-            if (arr[rt] == 0 && K_count == 0) {
-                int max = rt-lt;
-                lt = p;
-                if(max > max_len) max_len = max;
-                K_count = K-1;
-            } else if (arr[rt] == 0) {
-                K_count--;
-                p = rt;
-
+            if (arr[rt] == 0) cnt++; // 0 -> 1 변환
+            while (cnt > K) {
+                if (arr[lt] == 0) cnt--; // 1 -> 0 변환
+                lt++;
             }
-            answer = max_len;
+            answer = Math.max(answer, rt - lt + 1);
         }
-
-
         return answer;
     }
 
