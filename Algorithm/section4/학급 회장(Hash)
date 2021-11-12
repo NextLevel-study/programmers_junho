@@ -1,0 +1,33 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+
+    public static char solution(int N, String S) {
+        char answer = ' ';
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : S.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        int max = Integer.MIN_VALUE;
+        for (char key : map.keySet()) {
+            if (map.get(key) > max) {
+                max = map.get(key);
+                answer = key;
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int N = scan.nextInt();
+        String S = scan.next();
+        int[] arr = new int[N];
+
+        System.out.println(Main.solution(N, S));
+
+    }
+}
