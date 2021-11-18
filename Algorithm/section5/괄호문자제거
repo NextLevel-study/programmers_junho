@@ -1,0 +1,27 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+
+    public static ArrayList<Character> solution(String str) {
+
+        Stack<Character> stack = new Stack<>();
+        ArrayList<Character> answer = new ArrayList<>();
+        for (char x : str.toCharArray()) {
+            if(x == '(') stack.push(x);
+            else if(x == ')') stack.pop();
+            else if(stack.isEmpty()) answer.add(x);
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String str = scan.next();
+
+        for (char x : Main.solution(str)) {
+            System.out.print(x + "");
+        }
+    }
+}
