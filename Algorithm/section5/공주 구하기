@@ -1,0 +1,26 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+
+    public static int solution(int n, int k) {
+        int answer = 0;
+        Queue<Integer> Q = new LinkedList<>();
+        for (int i = 1; i <= n; i++) Q.offer(i);
+        while (!Q.isEmpty()) {
+            for (int i = 1; i < k; i++) Q.offer(Q.poll());
+            Q.poll();
+            if(Q.size() == 1) return Q.poll();
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int k = scan.nextInt();
+
+        System.out.println(Main.solution(n, k));
+    }
+}
