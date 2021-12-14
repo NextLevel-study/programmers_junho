@@ -1,33 +1,30 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+package algorithm;
+
+import java.util.*;
 
 public class Main {
-    public String solution(String str1, String str2){
-        Queue<Character> queue = new LinkedList<>();
-        for (char c :str1.toCharArray()) {
-            queue.offer(c);
-        }
-        for (char c : str2.toCharArray()) {
-            if(queue.contains(c)){
-                if(c != queue.poll()){
-                    return "NO";
-                }
+
+    public static String solution(String s1, String s2) {
+        String answer = "YES";
+        Queue<Character> Q = new LinkedList<>();
+        for(char x : s1.toCharArray()) Q.offer(x);
+        for (char c : s2.toCharArray()) {
+            if (Q.contains(c)) {
+                if(c != Q.poll()) return "NO";
             }
         }
-        if(!queue.isEmpty()){
-            return "NO";
-        }
-        return "YES";
+        if(!Q.isEmpty()) return "NO";
+        return answer;
     }
+
     public static void main(String[] args) {
-        Main java5_7 = new Main();
+        Scanner scan = new Scanner(System.in);
+        String s1 = scan.next();
+        String s2 = scan.next();
 
-        Scanner sc = new Scanner(System.in);
 
-        String str1 = sc.nextLine();
-        String str2 = sc.nextLine();
-
-        System.out.println(java5_7.solution(str1, str2));
+        System.out.println(Main.solution(s1, s2));
     }
+
+
 }
