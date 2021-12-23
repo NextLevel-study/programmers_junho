@@ -9,22 +9,18 @@ public class Main {
 
     public static int solution(int N, int K) {
         int answer = 0;
-        Queue<Integer> queue = new LinkedList<>();
+        Queue<Integer> Q = new LinkedList<>();
         for (int i = 1; i <= N; i++) { // 1 ~ 8까지 Queue에 넣는다.
-            queue.offer(i);
+            Q.offer(i);
         }
 
-        while (queue.size() != 1) { // Queue에 1개만 남을 때까지 계속 반복
+        while (Q.size() != 1) { // Queue에 1개만 남을 때까지 계속 반복
             for (int i = 1; i < K; i++) {
-                queue.offer(queue.poll()); // 첫번째 값을 제거 후 맨 뒤에 넣기
+                Q.offer(Q.poll()); // 첫번째 값을 제거 후 맨 뒤에 넣기
             }
-
-
+            Q.poll(); // K 번째에는 값 제거
         }
-
-
-
-        return answer;
+        return Q.poll(); // 마지막 1개 남은 수 리턴
     }
 
     public static void main(String[] args) {
