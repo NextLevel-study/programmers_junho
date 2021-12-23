@@ -1,29 +1,37 @@
 package algorithm;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 public class Main {
 
-    public static String solution(String s1, String s2) {
+    public static String solution(String required, String subject) {
         String answer = "YES";
-        Queue<Character> Q = new LinkedList<>();
-        for(char x : s1.toCharArray()) Q.offer(x);
-        for (char c : s2.toCharArray()) {
-            if (Q.contains(c)) {
-                if(c != Q.poll()) return "NO";
+        Queue<Character> reQ = new LinkedList<>(); // 필수 과목 Queue
+
+
+        for (char x : required.toCharArray()) reQ.offer(x); // Queue에 필수 과목 넣기
+
+        for (char c : subject.toCharArray()) {
+            if (reQ.contains(c)) { // 필수 과목 포함 여부 확인
+                if (reQ.poll() != c) {
+                    return "NO";
+                }
             }
         }
-        if(!Q.isEmpty()) return "NO";
+        if (!reQ.isEmpty()) return "NO";
+
         return answer;
     }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String s1 = scan.next();
-        String s2 = scan.next();
+        String required = scan.next();
+        String subject = scan.next();
 
-
-        System.out.println(Main.solution(s1, s2));
+        System.out.println(Main.solution(required, subject));
     }
 
 
