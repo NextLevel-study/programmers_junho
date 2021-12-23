@@ -1,26 +1,40 @@
 package algorithm;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 public class Main {
 
-    public static int solution(int n, int k) {
+    public static int solution(int N, int K) {
         int answer = 0;
-        Queue<Integer> Q = new LinkedList<>();
-        for (int i = 1; i <= n; i++) Q.offer(i);
-        while (!Q.isEmpty()) {
-            for (int i = 1; i < k; i++) Q.offer(Q.poll());
-            Q.poll();
-            if(Q.size() == 1) return Q.poll();
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 1; i <= N; i++) { // 1 ~ 8까지 Queue에 넣는다.
+            queue.offer(i);
         }
+
+        while (queue.size() != 1) { // Queue에 1개만 남을 때까지 계속 반복
+            for (int i = 1; i < K; i++) {
+                queue.offer(queue.poll()); // 첫번째 값을 제거 후 맨 뒤에 넣기
+            }
+
+
+        }
+
+
+
         return answer;
     }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int k = scan.nextInt();
+        int N = scan.nextInt();
+        int K = scan.nextInt();
 
-        System.out.println(Main.solution(n, k));
+
+        System.out.println(Main.solution(N, K));
     }
+
+
 }
