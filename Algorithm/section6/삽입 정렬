@@ -1,0 +1,27 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+    public static int[] solution(int N, int[] arr) {
+        for (int i = 1; i < N; i++) {
+            int tmp = arr[i], k;
+            for (k = i - 1; k >= 0; k--) {
+                if (arr[k] > tmp) arr[k + 1] = arr[k];
+                else break;
+            }
+            arr[k + 1] = tmp;
+        }
+        return arr;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        int[] arr = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = scan.nextInt();
+        }
+        for (int x : Main.solution(N, arr)) System.out.print(x + " ");
+    }
+}
