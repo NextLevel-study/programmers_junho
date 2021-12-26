@@ -24,6 +24,4 @@ public class Main {
         }
         for (int x : Main.solution(N, arr)) System.out.print(x + " ");
     }
-
-
 }
