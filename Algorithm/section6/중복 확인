@@ -1,0 +1,24 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+    public static String solution(int size, int[] arr) {
+        String answer = "U";
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int x : arr) {
+            map.put(x, map.getOrDefault(x, 0) + 1);
+        }
+        for(int key : map.keySet()) if(map.get(key) >= 2) return "D";
+        return answer;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int size = scan.nextInt(); // 캐시의 크기
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) arr[i] = scan.nextInt();
+        System.out.println(Main.solution(size, arr));
+    }
+}
