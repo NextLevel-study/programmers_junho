@@ -1,0 +1,27 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+    public static ArrayList<Integer> solution(int size, int[] arr) {
+        ArrayList<Integer> answer = new ArrayList<>();
+        int[] tmp = arr.clone();
+        Arrays.sort(tmp);
+        for (int i = 0; i < size; i++) {
+            if(arr[i] != tmp[i]) answer.add(i + 1);
+        }
+
+        return answer;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int size = scan.nextInt();
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) arr[i] = scan.nextInt();
+        for (int x : Main.solution(size, arr)) {
+            System.out.print(x + " ");
+        }
+    }
+}
